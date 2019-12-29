@@ -22,6 +22,7 @@ class App extends React.Component
                   todos: global.inputArray,
                   dateInput:"",
                   timeInput:"",
+                  alert:""
                 }
 
 
@@ -32,6 +33,7 @@ class App extends React.Component
     this.handleCancel = this.handleCancel.bind(this)
     this.handleDate = this.handleDate.bind(this)
     this.handleTime = this.handleTime.bind(this)
+    this.reminder = this.reminder.bind(this)
   }
 
 
@@ -49,16 +51,50 @@ class App extends React.Component
   handleAdd(event)
     {
       event.preventDefault();
-      this.setState({textboxStatus: "formStyle", userInput: "", dateInput:"", timeInput:""})
+      this.setState({textboxStatus: "formStyle", userInput: "", dateInput:"", timeInput:"", alert:""})
     }
 
 
-  handleSubmit(event)
 
-    {
-      if (this.state.userInput!=="")
+    reminder(){
+      var curTime = new Date()  
+  var year= curTime.getFullYear()
+  var month= curTime.getMonth()
+  var day = curTime.getDate()
+  
+  var end = new Date(this.state.dateInput);
+  var year2= end.getFullYear()
+  var month2= end.getMonth()
+  var day2 = end.getDate()
+
+
+  var day3
+  var future =day2-day
+  var past = day-day2
+
+  var futureMonth = month2-month;
+  var pastMonth = month-month2;
+  var futureYear = year2-year;
+  var pastYear = year-year2;
+  if (futureYear===1){day3="Due next year"};
+  if (futureYear ===-1){day3="Due last year"}
+  if (futureYear >1){day3="due in "+futureYear+" year(s) time"};
+  if (futureYear<1){day3="due " +pastYear+" year(s) ago"};
+  if (futureMonth >0 && futureYear===0){day3="Due in "+futureMonth+" month(s) time"};
+  if (futureMonth<0 && futureYear===0){day3="Due "+pastMonth+" month(s) ago"};
+  if (future>0 && futureMonth===0 && futureYear===0){day3 ="Due in "+future+" day(s)"};
+  if (future<0 && futureMonth===0 && futureYear===0){day3="Due "+past+ " day(s) ago"};
+  if (future===0 && futureMonth===0 && futureYear===0){day3="Due today"};
+  return day3
+
+    }
+
+
+  handleSubmit(event) {
+
+  if (this.state.userInput!=="")
       {
-        global.inputArray[global.clickCount]={text:this.state.userInput, date:this.state.dateInput, time:this.state.timeInput} 
+        global.inputArray[global.clickCount]={text:this.state.userInput, date:this.state.dateInput, time:this.state.timeInput, alert:this.reminder()} 
         global.inputArray.sort(function(a, b){
     var dateA=new Date(a.date), dateB=new Date(b.date)
     return dateA-dateB //sort by date ascending
@@ -72,7 +108,7 @@ class App extends React.Component
             event.preventDefault();
             this.setState({textboxStatus: "formStyle", userInput: "", dateInput:""})
           }
-    }
+    };
 
 
   handleCancel(event){
@@ -84,6 +120,9 @@ class App extends React.Component
   handleDate(event)
     {
       this.setState({ dateInput: event.target.value})
+
+
+      
     }
 
 
