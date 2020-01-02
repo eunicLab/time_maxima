@@ -8,7 +8,6 @@
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -29,11 +28,12 @@ display:block;
 
 .todo-item {
     display: flex;
-    justify-content: flex-start;
+   
     align-items: center;
-    padding: 30px 20px 0;
+    padding: 20px 20px 0;
     width: 70%;
-    border-bottom: 1px solid #cecece;
+   
+  
     font-family: Roboto, sans-serif;
     font-weight: 100;
     font-size: 18px;
@@ -61,7 +61,15 @@ input[type=checkbox]:focus {
     font-style: italic;
     color: #5C5C5C;
     text-decoration: line-through;
+    margin-right:1%;
   }
+
+
+  .unchecked{
+    
+    margin-right:1%;
+  }
+
 
 .btn{
 color: black; 
@@ -177,10 +185,12 @@ font-weight: bold;
     font-size: 15px;
     color: #333333;
     display: flex;
-    justify-content: flex-start;
+    position: absolute; right:  15%;
     align-items: center;
-    padding-left: 30%;
-    padding-right:10%;
+    padding-left: 10px;
+    padding-right:10px;
+
+
 }
 
 .reminder{
@@ -189,8 +199,10 @@ font-weight: bold;
     font-size: 15px;
     color: #333333;
     display: flex;
-    justify-content: flex-start;
+    
     align-items: center;
+      margin-left: 50px;
+ 
     }
 
 
@@ -200,8 +212,16 @@ font-weight: bold;
     font-size: 15px;
     color: red;
     display: flex;
-    justify-content: flex-start;
+  
     align-items: center;
+    margin-left: 50px;
+      
+   
+ 
+    }
+
+    .container{
+      border-bottom: 1px solid #cecece; 
     }
 
 

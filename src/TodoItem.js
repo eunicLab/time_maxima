@@ -74,13 +74,16 @@ class TodoItem extends React.Component {
 
     return (
 
+    	<div className="container">
+
         <div className="todo-item">
             <input type="checkbox" name ="checkbox" checked = {this.state.checkBoxStatus} onChange={this.handleBoxChange}/>
-            <p className={this.state.checkBoxStatus ? "checked": null}>{this.props.item.text}</p>
-            <p className="date" >{this.props.item.date}</p>
-            <p className={this.reminderLogic() === true && this.state.checkBoxStatus ==false ? "reminderAlert":"reminder"}>{this.props.item.alert}</p>
-
+            <p className={this.state.checkBoxStatus ? "checked": "unchecked"}>{this.props.item.text}</p> 
+            <p className="date" >{this.props.item.date}</p><br/>
         </div>
+         <p className={this.reminderLogic() === true && this.state.checkBoxStatus ==false ? "reminderAlert":"reminder"}>{this.props.item.alert}</p>
+         </div>
+       
     )
 }
 }
