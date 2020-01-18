@@ -19,7 +19,9 @@
 
 .todo-list {
 display:block;
+
   width:80%;
+
   border-radius: 6px;
   background-color: white;
   color:black;
@@ -122,15 +124,18 @@ input[type=text] {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   border-radius: 6px;
   cursor: pointer;
+  
 }
 
 
 input [type=text]:hover{
   border-color: #008CBA;
+  
 }
 
 input [type=text]:focus{
   border: 1px solid #008CBA;
+  
 }
 
 
@@ -152,6 +157,7 @@ input[type=date] {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
   border-radius: 6px;
   cursor: pointer;
+   
 }
 
 
@@ -185,7 +191,7 @@ font-weight: bold;
     font-size: 15px;
     color: #333333;
     display: flex;
-    position: absolute; right:  15%;
+    position: absolute; right:  30%;
     align-items: center;
     padding-left: 10px;
     padding-right:10px;
@@ -231,3 +237,22 @@ font-weight: bold;
   padding: 32px 8px;
   margin-top:0px;
   }
+
+
+
+.icon1{
+  width:17px;
+  height:17px;
+position: absolute; right:  20%;
+cursor: pointer;
+
+}
+
+.icon2{
+  width:18px;
+  height:18px;
+position: absolute; right:  15%;
+cursor: pointer;
+
+}
+
