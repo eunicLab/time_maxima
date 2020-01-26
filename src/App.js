@@ -65,7 +65,7 @@ class App extends React.Component
 
 
 componentDidMount(){
-  axios.get('http://localhost:3000/api/stuff',)
+  axios.get('https://still-everglades-82859.herokuapp.com/api/stuff',)
   .then(response=>{ 
 
 
@@ -111,7 +111,7 @@ this.setState({todos:response.data})
 
         global.inputArray[global.clickCount]={id:"", text:this.state.userInput, date:this.state.dateInput, time:this.state.timeInput} 
          
-         axios.post('http://localhost:3000/api/stuff', global.inputArray[global.clickCount])
+         axios.post('https://still-everglades-82859.herokuapp.com/api/stuff', global.inputArray[global.clickCount])
          .then(res=> {window.location = '/';}
 )
 

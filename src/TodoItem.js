@@ -173,7 +173,7 @@ handleUpdate(event){
 
 
 
-  axios.put('http://localhost:3000/api/stuff/'+this.props.item._id, upDatedList)
+  axios.put('https://still-everglades-82859.herokuapp.com/api/stuff/'+this.props.item._id, upDatedList)
 	.then(res=>{window.location = '/';
 });
 
@@ -196,7 +196,7 @@ handleCancel(event){
 	handleDelete(event){
 		console.log(this.props.item._id)
    
-    axios.delete('http://localhost:3000/api/stuff/'+this.props.item._id)
+    axios.delete('https://still-everglades-82859.herokuapp.com/api/stuff/'+this.props.item._id)
     .then(res=> {window.location = '/';
 });
 }
