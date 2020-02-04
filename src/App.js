@@ -28,7 +28,7 @@ class App extends React.Component
                 }
 
 
-    this.handleRefresh = this.handleRefresh.bind(this)
+   
     this.handleAdd = this.handleAdd.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange=this.handleChange.bind(this)
@@ -50,8 +50,6 @@ class App extends React.Component
 
 
 
-
-  handleRefresh(){window.location.reload(false);}
 
   handleAdd(event)
     {
@@ -194,7 +192,7 @@ render(){
                 <button className="btn" onClick={this.handleAdd}>
                   Add a New Item
                 </button>
-                <button className = "btn" onClick={this.handleRefresh}> Start a New List</button>
+               
     
             
             {todoItems}
