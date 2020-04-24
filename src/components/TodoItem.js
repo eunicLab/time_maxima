@@ -1,7 +1,7 @@
 import React from 'react';
-import './ToDoApp.css';
-import edit from './edit_icon.png';
-import delete_icon from './delete_icon.png';
+import '../App.css';
+import edit from '../edit_icon.png';
+import delete_icon from '../delete_icon.png';
 import axios from 'axios';
 
 class TodoItem extends React.Component {
@@ -13,11 +13,11 @@ class TodoItem extends React.Component {
       styleText: 'unchecked',
       reminder: null,
       alert: false,
-      editBoxStatus: 'noTextBox',
+      editBoxStatus: 'noDisplay',
       userInput: '',
       dateInput: '',
       timeInput: '',
-      updateCount: global.updateCount
+      updateCount: global.updateCount,
     };
 
     this.handleBoxChange = this.handleBoxChange.bind(this);
@@ -146,7 +146,7 @@ class TodoItem extends React.Component {
 
   handleBoxChange(event) {
     this.setState({
-      checkBoxStatus: event.target.checked
+      checkBoxStatus: event.target.checked,
     });
   }
 
@@ -157,7 +157,7 @@ class TodoItem extends React.Component {
       editBoxStatus: 'formStyle',
       userInput: this.props.item.text,
       dateInput: this.props.item.date,
-      timeInput: this.props.item.time
+      timeInput: this.props.item.time,
     });
   }
 
@@ -167,29 +167,32 @@ class TodoItem extends React.Component {
     const upDatedList = {
       text: this.state.userInput,
       date: this.state.dateInput,
-      time: this.state.timeInput
+      time: this.state.timeInput,
     };
 
     axios
       .put(
         'https://still-everglades-82859.herokuapp.com/api/stuff/' +
           this.props.item._id,
-        upDatedList
+        upDatedList,
+        {
+          headers: { Authorization: `Bearer ${this.props.token}` },
+        }
       )
-      .then(res => {
+      .then((res) => {
         global.updateCount++;
         this.setState({ updateCount: global.updateCount });
         this.sendData();
       });
 
     this.setState({
-      editBoxStatus: 'noTextBox'
+      editBoxStatus: 'noDisplay',
     });
   }
 
   handleCancel(event) {
     event.preventDefault();
-    this.setState({ editBoxStatus: 'noTextBox' });
+    this.setState({ editBoxStatus: 'noDisplay' });
   }
 
   sendData = () => {
@@ -201,9 +204,12 @@ class TodoItem extends React.Component {
     axios
       .delete(
         'https://still-everglades-82859.herokuapp.com/api/stuff/' +
-          this.props.item._id
+          this.props.item._id,
+        {
+          headers: { Authorization: `Bearer ${this.props.token}` },
+        }
       )
-      .then(res => {
+      .then((res) => {
         global.updateCount++;
         this.setState({ updateCount: global.updateCount });
         this.sendData();
