@@ -1,7 +1,7 @@
 import React from 'react';
 import '../App.css';
-import edit from '../edit_icon.png';
-import delete_icon from '../delete_icon.png';
+import edit from '../images/edit_icon.png';
+import delete_icon from '../images/delete_icon.png';
 import axios from 'axios';
 
 class TodoItem extends React.Component {
